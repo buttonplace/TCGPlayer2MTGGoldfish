@@ -5,16 +5,14 @@ if len(sys.argv) != 2:
     exit()
 
 tcg = sys.argv[1]
-goldfish = 'IMPORTME.csv'
+out = 'IMPORTME.csv'
 
-with open(tcg, 'r') as tcg, open(goldfish, 'w') as goldfish:
+with open(tcg, 'r') as tcg, open(out, 'w') as goldfish:
     goldfish.write('Name,Edition,Qty,Foil\n')
     for line in tcg:
         split = line.split()
-        count = split.pop(0)
-        mtgSet = split.pop(-1)[1:4]
-        name = ' '.join(split)
-        if ',' in name:
-            name = f'\"{name}\"'
-        foil = 'No'
-        goldfish.write(f'{name},{mtgSet},{count},{foil}\n')
+        name = '\"' + ' '.join(split[1:-1]) + '\"'
+        goldfish.write(f'{name},{split.pop(-1)[1:4]},{split.pop(0)},No\n')
+
+print(f"File exported as {out}")
+print(f"Import to MTGGoldfish as an MTG Studio file.")
