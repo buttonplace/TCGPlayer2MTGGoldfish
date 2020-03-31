@@ -13,7 +13,6 @@ Python TCGtoGoldfish.py <input.txt>
 The .csv will be saved in the same directory.
 
 ## Contact
-
-tevedeh@gmail.com
+me@tristan.engineer
 
 www.linkedin.com/in/tristan-anderson
